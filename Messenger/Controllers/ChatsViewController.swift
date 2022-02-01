@@ -29,10 +29,9 @@ class ChatsViewController: UIViewController {
     //MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden=false
-        startListingToConversation()
-        tableView.reloadData()
+//        startListingToConversation()
+//        tableView.reloadData()
     }
-    
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,21 +85,21 @@ class ChatsViewController: UIViewController {
                     return
                 }
                 switch results {
-                case .success(var conversation):
+                case .success(let conversation):
                
                     if  !conversation.isEmpty
                     {
-                        conversation.sort(by: {
-                        let date1 =  ConversationViewController.dateFormatter.date(from: $0.latestMessage.date  )
-                        let date2 = ConversationViewController.dateFormatter.date(from: $1.latestMessage.date )
-                            guard let x1 = date1 , let x2 = date2 else
-                            {
-                                return false
-                            }
-                            return  x1.compare(x2) == .orderedDescending
-                           
-                            
-                        })
+//                        conversation.sort(by: {
+//                        let date1 =  ConversationViewController.dateFormatter.date(from: $0.latestMessage.date  )
+//                        let date2 = ConversationViewController.dateFormatter.date(from: $1.latestMessage.date )
+//                            guard let x1 = date1 , let x2 = date2 else
+//                            {
+//                                return false
+//                            }
+//                            return  x1.compare(x2) == .orderedDescending
+//
+//
+//                        })
                         strongSelf.conversation = conversation
                         DispatchQueue.main.async {
                             strongSelf.showConversationLabel.isHidden = true
@@ -154,6 +153,17 @@ extension ChatsViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        self.conversation.sort(by: {
+                              let date1 =  ConversationViewController.dateFormatter.date(from: $0.latestMessage.date  )
+                              let date2 = ConversationViewController.dateFormatter.date(from: $1.latestMessage.date )
+                                  guard let x1 = date1 , let x2 = date2 else
+                                  {
+                                      return false
+                                  }
+                                  return  x1.compare(x2) == .orderedDescending
+      
+      
+                              })
         let model = conversation[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: K.ChatCellIdentifire, for: indexPath) as! ChatTableViewCell
         cell.configure(with: model)

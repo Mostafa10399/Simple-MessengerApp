@@ -246,7 +246,7 @@ extension DataBaseManger
                            "is_read":false
                        ],
                        "messagesCollection":[collectionMessage]
-
+                        
                    ]
                    
                    // update recpient conversation entry
