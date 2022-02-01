@@ -83,7 +83,9 @@ extension AppDelegate : GIDSignInDelegate
         if let email = user.profile.email, let firstName = user.profile.givenName ,let secondName = user.profile.familyName  {
             NotificationCenter.default.post(name: Notification.Name("SpinnerShow"), object: nil)
 
-            
+            UserDefaults.standard.set(email, forKey: K.email)
+            UserDefaults.standard.set("\(firstName) \(secondName)" , forKey: K.name)
+
             DataBaseManger.shared.existUser(with: email) { exist in
                 if !exist
                 {
