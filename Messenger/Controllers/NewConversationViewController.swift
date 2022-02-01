@@ -94,7 +94,7 @@ extension NewConversationViewController:UISearchBarDelegate
     //MARK: - Filter User
     func filterUsers(with term:String)
     {
-        guard let currentUser = UserDefaults.standard.value(forKey: "email") as? String ,hasFetched else
+        guard let currentUser = UserDefaults.standard.value(forKey: K.email) as? String ,hasFetched else
         {
             return
         }

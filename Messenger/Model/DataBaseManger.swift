@@ -195,7 +195,7 @@ extension DataBaseManger
            break
            
        }
-       if let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,let nameOther = UserDefaults.standard.value(forKey: "name") as? String
+       if let currentEmail = UserDefaults.standard.value(forKey: K.email) as? String,let nameOther = UserDefaults.standard.value(forKey: K.name) as? String
        {
            let messageDate = firstMessage.sentDate
            let dateString = ConversationViewController.dateFormatter.string(from: messageDate)
@@ -208,7 +208,7 @@ extension DataBaseManger
                    return}
                if var userNode = snapShot.value as? [String:Any]
                {
-                           if let curretnUserEmail = UserDefaults.standard.value(forKey: "email") as? String
+                   if let curretnUserEmail = UserDefaults.standard.value(forKey: K.email) as? String
                            {
                                let safeMail = DataBaseManger.SafeEmail(with: curretnUserEmail)
                                collectionMessage = [
@@ -357,7 +357,7 @@ extension DataBaseManger
        var collectionMessage :[String:Any] = [:]
        let messageDate = firstMessage.sentDate
        let dateString = ConversationViewController.dateFormatter.string(from: messageDate)
-       if let curretnUserEmail = UserDefaults.standard.value(forKey: "email") as? String
+       if let curretnUserEmail = UserDefaults.standard.value(forKey: K.email) as? String
        {
            let safeMail = DataBaseManger.SafeEmail(with: curretnUserEmail)
            collectionMessage = [
@@ -430,7 +430,7 @@ extension DataBaseManger
    /// gives all messages for a given conversation
    func getAllMessagesForConversation(with id:String,to otherUserEmail:String,completion:@escaping(Result<[Message],Error>)->Void)
    {
-       guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else
+       guard let currentEmail = UserDefaults.standard.value(forKey: K.email) as? String else
        {
            return
        }
@@ -594,7 +594,7 @@ extension DataBaseManger
                var newMessageEntry :[String:Any] = [:]
                let messageDate = newMessage.sentDate
                let dateString = ConversationViewController.dateFormatter.string(from: messageDate)
-               if let curretnUserEmail = UserDefaults.standard.value(forKey: "email") as? String
+               if let curretnUserEmail = UserDefaults.standard.value(forKey: K.email) as? String
                {
                    let safeMail = DataBaseManger.SafeEmail(with: curretnUserEmail)
                    newMessageEntry = [
@@ -609,7 +609,7 @@ extension DataBaseManger
                    
                    
                }
-               if let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String
+               if let currentUserEmail = UserDefaults.standard.value(forKey: K.email) as? String
                {
                    let updatedValue:[String:Any] = [
                        "date":dateString,
@@ -697,7 +697,7 @@ extension DataBaseManger
                                        "message":message,
                                        "is_read":false
                                    ]
-                                   guard let userName = UserDefaults.standard.value(forKey: "name") as? String else
+                                   guard let userName = UserDefaults.standard.value(forKey: K.name) as? String else
                                    {
                                        return
                                    }
@@ -820,7 +820,7 @@ extension DataBaseManger
    func conversationExist(with targetRecpientEmail:String , completion:@escaping(Result<String,Error>)->Void)
    {
        let safeRecepientEmail = DataBaseManger.SafeEmail(with: targetRecpientEmail)
-       guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else
+       guard let currentUserEmail = UserDefaults.standard.value(forKey: K.email) as? String else
        {return}
        let safeSenderUserEmail = DataBaseManger.SafeEmail(with: currentUserEmail)
        database.child("\(safeRecepientEmail)/conversations").observeSingleEvent(of: .value) { snapShot in
@@ -863,7 +863,7 @@ extension DataBaseManger
    func deleteConversation (conversationID :String , completion:@escaping (Bool)->Void )
    {
        print("deleting conversation with id : \(conversationID)")
-       guard let email = UserDefaults.standard.value(forKey: "email") as? String else
+       guard let email = UserDefaults.standard.value(forKey: K.email) as? String else
        {
            return
        }

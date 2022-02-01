@@ -170,6 +170,8 @@
 		F61CA50E27A5A3FD0051D80C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F61CA53627A5A4220051D80C /* StorageManger.swift */,
+				F61CA53527A5A4220051D80C /* DataBaseManger.swift */,
 				F61CA50F27A5A3FD0051D80C /* Conversation.swift */,
 				F61CA51027A5A3FD0051D80C /* ChatAppUser.swift */,
 				F61CA51127A5A3FD0051D80C /* SearchResult.swift */,
@@ -200,8 +202,6 @@
 		F61CA53427A5A4220051D80C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F61CA53527A5A4220051D80C /* DataBaseManger.swift */,
-				F61CA53627A5A4220051D80C /* StorageManger.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

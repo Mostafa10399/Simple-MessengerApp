@@ -93,8 +93,8 @@ extension AppDelegate : GIDSignInDelegate
                         {
                             let chatUser = ChatAppUser(email: email, firstName: firstName  , secondName:secondName )
                             let fileName = chatUser.profilePictureFileName
-                            UserDefaults.standard.set(email, forKey: "email")
-                            UserDefaults.standard.set("\(firstName) \(secondName)" , forKey: "name")
+                            UserDefaults.standard.set(email, forKey: K.email)
+                            UserDefaults.standard.set("\(firstName) \(secondName)" , forKey: K.name)
 
                             URLSession.shared.dataTask(with: url) { data, response, error in
                                 if let data = data {
