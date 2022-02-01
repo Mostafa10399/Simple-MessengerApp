@@ -2,6 +2,7 @@
 import Foundation
 struct ProfileViewModel
 {
-    let title :String
+    let email :String
     var handler:(()->Void)?
+    var title:String?
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var emailLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +22,7 @@ class ProfileTableViewCell: UITableViewCell {
     }
     func setUp (with viewModel:ProfileViewModel)
     {
+        emailLabel.text = viewModel.email
         
     }
     

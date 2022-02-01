@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getProfileInfo()
-        data.append(ProfileViewModel(title: "Name:\(UserDefaults.standard.value(forKey: K.name) as? String ?? "no name")", handler: nil))
+        data.append(ProfileViewModel(email: "Email:\(UserDefaults.standard.value(forKey: K.email) as? String ?? "no Email")", handler: nil))
         tableView.dataSource = self
         tableView.delegate = self
         profileImage.layer.cornerRadius = profileImage.frame.size.height/2
@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
             let fileName = "\(email)_profile_picture.png"
             let path="images/\(fileName)"
             print(path)
-            userName.text=UserDefaults.standard.value(forKey: "name") as? String
+            userName.text=UserDefaults.standard.value(forKey: K.name) as? String
             StorageManger.shared.downloadUrl(with: path) {[weak self] result in
                 guard let strongSelf = self else
                 {

@@ -13,7 +13,6 @@ class OtherUserProfileViewController: UIViewController {
     //MARK: - variables
     let spinner = JGProgressHUD(style: .dark)
     var nameUser:String?
-    var data = [ProfileViewModel]()
     var userEmail:String?
     //MARK: - IBOutlet
     @IBOutlet weak var userName: UILabel!
@@ -23,7 +22,6 @@ class OtherUserProfileViewController: UIViewController {
         super.viewDidLoad()
 
         getProfileInfo()
-        data.append(ProfileViewModel(title: "Name:\(nameUser ?? "no name")", handler: nil))
       
         profileImage.layer.cornerRadius = profileImage.frame.size.height/2
         profileImage.layer.borderWidth = 1.0
